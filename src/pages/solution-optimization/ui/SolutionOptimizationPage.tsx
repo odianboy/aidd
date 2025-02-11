@@ -9,6 +9,8 @@ import { LoadingOutlined } from '@ant-design/icons';
 
 import screenfull from 'screenfull';
 
+import { useHover } from 'usehooks-ts';
+
 import { useValues } from '../../../shared/lib/hooks/useValues.ts';
 
 import { SolutionOptimizationItem } from './SolutionOptimizationItem.tsx';
@@ -36,6 +38,9 @@ export const SolutionOptimizationPage = () => {
 
   const player = useRef<ReactPlayer | null>(null);
   const [showArrows, setShowArrows] = useState(false);
+
+  const hoverRef = useRef(null);
+  const isHover = useHover(hoverRef);
 
   const {
     values: { isPlayingVideo, currentVideo, isLoader },
@@ -216,6 +221,7 @@ export const SolutionOptimizationPage = () => {
               <Flex
                 vertical
                 style={{ border: '3px solid #2FBEAD', borderRadius: 50 }}
+                ref={hoverRef}
               >
                 <Xwrapper>
                   {solutionOptimizationList.map(
@@ -236,6 +242,7 @@ export const SolutionOptimizationPage = () => {
                     dragState.sourceId &&
                     getPossibleTargets(dragState.sourceId).map(targetId => (
                       <Xarrow
+                        showXarrow={!isHover}
                         key={`${dragState.sourceId}-${targetId}`}
                         start={dragState.sourceId!}
                         end={targetId}
