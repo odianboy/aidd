@@ -1,0 +1,10 @@
+@keyframes dashMove {
+    to {
+        stroke-dashoffset: -100;
+    }
+}
+
+.animated-dash {
+    animation: dashMove 1s linear infinite;
+}
+
