@@ -1,0 +1,1 @@
+@keyframes dashMove{to{stroke-dashoffset:-100}}.animated-dash{animation:dashMove 1s linear infinite}body,html,#root{height:100%;display:flex;flex-direction:column;justify-content:center}*,*:before,*:after{box-sizing:border-box}
